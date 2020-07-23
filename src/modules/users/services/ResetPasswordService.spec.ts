@@ -30,6 +30,8 @@ describe('SendForgotPasswordEmail', () => {
       token,
     });
 
-    expect(sendMail).toHaveBeenCalled();
+    const updatedUser = await fakeUsersRepository.findById(user.id);
+
+    expect(updatedUser?.password).toBe('123123');
   });
 });
