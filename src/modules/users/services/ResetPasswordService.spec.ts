@@ -17,7 +17,11 @@ describe('ResetPasswordService', () => {
 
     fakeHashProvider = new FakeHashProvider();
 
-    resetPassword = new ResetPasswordService(fakeUsersRepository, fakeUserTokensRepository, fakeHashProvider);
+    resetPassword = new ResetPasswordService(
+      fakeUsersRepository,
+      fakeUserTokensRepository,
+      fakeHashProvider,
+    );
   });
 
   it('should be able to reset the password', async () => {
@@ -53,7 +57,9 @@ describe('ResetPasswordService', () => {
   });
 
   it('should not be able to reset the password with non-existing user', async () => {
-    const { token } = await fakeUserTokensRepository.generate('non-existing-user');
+    const { token } = await fakeUserTokensRepository.generate(
+      'non-existing-user',
+    );
 
     await expect(
       resetPassword.execute({

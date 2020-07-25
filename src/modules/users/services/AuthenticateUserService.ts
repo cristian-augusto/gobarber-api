@@ -32,9 +32,13 @@ class AuthenticateUserService {
 
     if (!user) throw new AppError('Incorrect email/password combination', 401);
 
-    const passwordMathed = await this.hashProvider.compareHash(password, user.password);
+    const passwordMathed = await this.hashProvider.compareHash(
+      password,
+      user.password,
+    );
 
-    if (!passwordMathed) throw new AppError('Incorrect email/password combination', 401);
+    if (!passwordMathed)
+      throw new AppError('Incorrect email/password combination', 401);
 
     const { secret, expiresIn } = authConfig.jwt;
 
