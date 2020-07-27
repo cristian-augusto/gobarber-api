@@ -8,24 +8,21 @@ interface IRequest {
   year: number;
 }
 
-type IResponse = Array<{
+type IResponse = {
   day: number;
   avaible: boolean;
-}>;
+}[];
 
 @injectable()
-class ListProviderMonthAvailabilityService {
-  constructor(
-    @inject('AppointmentsRepository')
-    private appointmentsRepository: IAppointmentsRepository,
-  ) {}
+export default class ListProviderMonthAvailabilityService {
+  constructor(private appointmentsRepository: IAppointmentsRepository) {}
 
   public async execute({
     provider_id,
     month,
     year,
   }: IRequest): Promise<IResponse> {
-    const appointments = this.appointmentsRepository.findAllInMonthFromProvider(
+    const appointments = await this.appointmentsRepository.findAllInMonthFromProvider(
       {
         provider_id,
         month,
@@ -40,4 +37,3 @@ class ListProviderMonthAvailabilityService {
     ];
   }
 }
-export default ListProviderMonthAvailabilityService;
