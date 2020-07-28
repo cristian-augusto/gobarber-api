@@ -7,7 +7,9 @@ temp/
 tmp/
 
 # testing
-/coverage/*
+coverage/
+coverage/*
+
 
 # production
 /build
