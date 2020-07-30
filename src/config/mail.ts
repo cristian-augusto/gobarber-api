@@ -13,7 +13,7 @@ export default {
 
   defaults: {
     from: {
-      email: 'contato@cafecomcodigo.dev',
+      email: 'cristian@cafecomcodigo.dev',
       name: 'Cristian - Café com Código',
     },
   },
