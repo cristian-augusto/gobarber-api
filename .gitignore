@@ -9,7 +9,9 @@ tmp/
 # testing
 /coverage/*
 
-
+#config
+.env
+ormconfig.json
 
 # production
 /build
