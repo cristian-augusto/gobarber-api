@@ -4,7 +4,12 @@ import multer from 'multer';
 
 const tmpFolder = path.resolve(__dirname, '..', '..', 'tmp');
 
+interface IUploadConfig {
+  driver: 's3' | 'disk';
+}
+
 export default {
+  driver: process.env.STORAGE_DRIVER,
   tmpFolder,
   uploadsFolder: path.resolve(tmpFolder, 'uploads'),
 
@@ -16,4 +21,4 @@ export default {
       return callback(null, fileName);
     },
   }),
-};
+} as IUploadConfig;
